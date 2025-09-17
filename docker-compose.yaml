@@ -1,17 +1,10 @@
 services:
-  nexus-cli-1:
+  nexus-cli:
     image: nexusxyz/nexus-cli:latest
-    container_name: nexus-cli-1
+    container_name: nexus-cli
     restart: always
     command: >
-      start --node-id <Node ID 1> --headless
-
-  nexus-cli-2:
-    image: nexusxyz/nexus-cli:latest
-    container_name: nexus-cli-2
-    restart: always
-    command: >
-      start --node-id <Node ID 2> --headless
+      start --node-id <Node ID> --headless --with-background
 
   watchtower:
     image: containrrr/watchtower
@@ -20,4 +13,4 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: >
-      nexus-cli-1 nexus-cli-2 --cleanup --interval 3600
+      nexus-cli --cleanup --interval 3600
