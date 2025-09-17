@@ -4,14 +4,14 @@ services:
     container_name: nexus-cli-1
     restart: always
     command: >
-      start --node-id <Node ID 1> --headless --with-background
+      start --node-id <Node ID 1> --headless
 
   nexus-cli-2:
     image: nexusxyz/nexus-cli:latest
     container_name: nexus-cli-2
     restart: always
     command: >
-      start --node-id <Node ID 2> --headless --with-background
+      start --node-id <Node ID 2> --headless
 
   watchtower:
     image: containrrr/watchtower
