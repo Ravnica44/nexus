@@ -1,0 +1,16 @@
+services:
+  nexus-cli:
+    image: nexusxyz/nexus-cli:latest
+    container_name: nexus-cli
+    restart: always
+    command: >
+      start --node-id <Node ID> --headless --with-background
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: >
+      nexus-cli --cleanup --interval 3600
